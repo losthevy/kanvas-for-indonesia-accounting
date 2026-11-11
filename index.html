@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KANVAS · Purwarupa Prapengisian SPT Kreator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#15305C;--red:#A31621;--blue:#2F6DB5;--green:#2E9E4F;--yel:#E0A21B;--bg:#F3F5F9;--line:#DDE2EB;--ink:#1C2333;--mut:#5D6678}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14px}
+button{font-family:inherit;cursor:pointer}
+.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+aside{background:var(--navy);color:#fff;padding:22px 16px;display:flex;flex-direction:column;gap:18px}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{width:42px;height:42px;border-radius:12px;background:#fff;color:var(--navy);display:grid;place-items:center;font-weight:700;font-size:22px;position:relative}
+.logo:after{content:"";position:absolute;right:-4px;bottom:-4px;width:14px;height:14px;border-radius:50%;background:var(--red);border:3px solid var(--navy)}
+.brand b{font-size:20px;letter-spacing:.5px}.brand small{display:block;font-size:10.5px;opacity:.75;line-height:1.3}
+.nav{display:flex;flex-direction:column;gap:4px}
+.nav button{background:transparent;border:0;color:#cfd8ea;text-align:left;padding:10px 12px;border-radius:10px;font-size:13.5px;display:flex;gap:10px;align-items:center;font-weight:500}
+.nav button .n{width:24px;height:24px;border-radius:50%;border:2px solid #6f86b0;display:grid;place-items:center;font-size:11.5px;font-weight:700;flex:none}
+.nav button.on{background:#fff;color:var(--navy);font-weight:600}.nav button.on .n{border-color:var(--navy);background:var(--navy);color:#fff}
+.nav button.done .n{background:var(--green);border-color:var(--green);color:#fff}
+.side-note{margin-top:auto;font-size:11px;opacity:.75;line-height:1.5;border-top:1px solid rgba(255,255,255,.2);padding-top:12px}
+main{padding:22px 26px 40px;min-width:0}
+.top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.top h1{font-size:22px;color:var(--navy)}.top p{color:var(--mut);font-size:12.5px}
+.who{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:30px;padding:6px 14px 6px 6px}
+.av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--navy));color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px}
+.who small{display:block;color:var(--mut);font-size:11px}
+.banner{background:linear-gradient(120deg,var(--navy),#23497f);color:#fff;border-radius:18px;padding:18px 20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px;position:relative;overflow:hidden}
+.banner:after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.06)}
+.banner h2{font-size:17px}.banner p{font-size:12.5px;opacity:.85;max-width:520px}
+.status{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chip{border-radius:20px;padding:4px 11px;font-size:11.5px;font-weight:600;display:inline-flex;gap:6px;align-items:center}
+.c-g{background:#E3F4E8;color:#1F7A3A}.c-y{background:#FBF0D7;color:#8A5B00}.c-r{background:#F8E1E4;color:var(--red)}.c-b{background:#E3ECF8;color:var(--navy)}
+.dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+.kpi{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px}
+.k{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}
+.k span{color:var(--mut);font-size:11.5px}.k b{display:block;font-size:21px;color:var(--navy);margin-top:2px}
+.k.hi{background:var(--red);border-color:var(--red)}.k.hi span{color:#fde3e6}.k.hi b{color:#fff}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px}
+.card h3{font-size:15.5px;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.grid2{display:grid;grid-template-columns:1.35fr 1fr;gap:16px}
+.src{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:14px;margin-bottom:10px}
+.ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#fff;font-weight:700;flex:none}
+.src .t{flex:1}.src .t b{display:block;font-size:13.5px}.src .t small{color:var(--mut)}
+.src .v{text-align:right}.src .v b{display:block;color:var(--navy)}.src .v small{color:var(--mut);font-size:11px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:right;color:var(--mut);font-weight:600;padding:8px 8px;border-bottom:2px solid var(--line);white-space:nowrap}
+td{text-align:right;padding:7px 8px;border-bottom:1px solid #EEF1F6;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+tfoot td{font-weight:700;color:var(--navy);border-top:2px solid var(--line);background:#F7F9FC}
+.tx{display:flex;gap:10px;align-items:flex-start;padding:11px 0;border-bottom:1px solid #EEF1F6}
+.tx .t{flex:1}.tx .t b{font-size:13px;display:block}.tx .t small{color:var(--mut);font-size:11.5px}
+.tx .a{font-weight:700;color:var(--navy);white-space:nowrap}
+.btns{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:#fff;border-radius:9px;padding:6px 11px;font-size:12px;font-weight:600;color:var(--navy)}
+.btn.p{background:var(--navy);color:#fff;border-color:var(--navy)}.btn.g{background:var(--green);color:#fff;border-color:var(--green)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.calc{display:grid;gap:8px}
+.row{display:flex;justify-content:space-between;padding:9px 12px;border-radius:10px;background:#F7F9FC;font-size:13px}
+.row b{color:var(--navy)}.row.minus{background:#fff;border:1px dashed var(--line)}.row.tot{background:#F8E1E4}.row.tot b,.row.tot span{color:var(--red);font-weight:700}
+.log{font-size:12px;color:var(--mut);border-left:3px solid var(--blue);padding-left:10px;display:grid;gap:6px;max-height:190px;overflow:auto}
+.log b{color:var(--ink);font-weight:600}
+.decl{border:2px dashed var(--red);border-radius:14px;padding:14px;background:#FFF8F8}
+.decl label{display:flex;gap:8px;align-items:center;margin:8px 0;font-size:13px}
+.decl input[type=number]{width:150px;padding:8px 10px;border:1px solid var(--line);border-radius:9px;font-family:inherit}
+.tabpane{display:none}.tabpane.on{display:block}
+.bar{height:8px;border-radius:6px;background:#E8ECF3;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:var(--green)}
+.mobnav{display:none}
+.foot{font-size:11px;color:var(--mut);text-align:center;margin-top:8px}
+@media (max-width:900px){
+ .app{grid-template-columns:1fr}
+ aside{display:none}
+ main{padding:14px 14px 90px}
+ .kpi{grid-template-columns:repeat(2,1fr)}.kpi .k.hi{grid-column:span 2}
+ .grid2{grid-template-columns:1fr}
+ .top h1{font-size:18px}
+ .who{display:none}
+ .mobhead{display:flex!important}
+ .mobnav{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);justify-content:space-around;padding:8px 4px 14px;z-index:5}
+ .mobnav button{border:0;background:none;font-size:10.5px;color:var(--mut);display:flex;flex-direction:column;align-items:center;gap:3px;font-weight:600}
+ .mobnav button .n{width:26px;height:26px;border-radius:50%;background:#E8ECF3;display:grid;place-items:center;font-size:12px;color:var(--navy);font-weight:700}
+ .mobnav button.on{color:var(--navy)}.mobnav button.on .n{background:var(--navy);color:#fff}
+ .hide-m{display:none}
+ .banner p,.top p{display:none}
+ .banner{padding:14px 16px}
+ .k b{font-size:19px}
+ table{font-size:11.5px}
+}
+.mobhead{display:none;align-items:center;gap:10px;margin-bottom:12px}
+.mobhead .logo{width:36px;height:36px;font-size:18px;border-radius:10px;background:var(--navy);color:#fff}
+.mobhead .logo:after{border-color:var(--bg)}
+.mobhead b{font-size:17px;color:var(--navy)}.mobhead small{display:block;font-size:10.5px;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="app">
+ <aside>
+  <div class="brand"><div class="logo">K</div><div><b>KANVAS</b><small>Kanal Adaptif Notifikasi, Verifikasi, dan Asistensi SPT</small></div></div>
+  <div class="nav" id="nav"></div>
+  <div class="side-note">Purwarupa konsep untuk esai Gebyar FEB 2026. Data adalah kasus ilustratif dan bukan layanan resmi otoritas pajak.</div>
+ </aside>
+ <main>
+  <div class="mobhead"><div class="logo">K</div><div><b>KANVAS</b><small>Draf SPT Tahunan 2026 · kasus ilustratif</small></div></div>
+  <div class="top">
+   <div><h1 id="ttl">Ringkasan Draf SPT Tahunan 2026</h1><p>Lapisan prapengisian di atas Coretax · disusun dari bukti potong dan bukti pungut pihak ketiga</p></div>
+   <div class="who"><div class="av">KI</div><div><b style="font-size:13px">Kreator Ilustratif</b><small>Lajang (TK/0) · NPPN 50% · NIK ••••7712</small></div></div>
+  </div>
+
+  <div class="banner">
+   <div><h2 id="bannerTitle">Draf hampir siap, tinggal dua langkah</h2><p id="bannerText">Putuskan 1 transaksi berlabel kuning dan nyatakan penghasilan di luar data pihak ketiga sebelum draf dapat dikirim.</p></div>
+   <div class="status" id="statusChips"></div>
+  </div>
+
+  <div class="kpi">
+   <div class="k"><span>Peredaran bruto</span><b id="kBruto">Rp380 jt</b></div>
+   <div class="k"><span>Neto (norma 50%)</span><b id="kNeto">Rp190 jt</b></div>
+   <div class="k"><span>PPh terutang</span><b id="kPPh">Rp14,4 jt</b></div>
+   <div class="k"><span>Kredit PPh 21 dan 22</span><b id="kKredit">Rp7,2 jt</b></div>
+   <div class="k hi"><span id="kPosLbl">Kurang bayar</span><b id="kPos">Rp7,2 jt</b></div>
+  </div>
+
+  <!-- 1 AGREGASI -->
+  <section class="tabpane" data-tab="0">
+   <div class="grid2">
+    <div class="card"><h3>Sumber data terhimpun <span class="chip c-g"><span class="dot"></span>NIK sebagai kunci tunggal</span></h3>
+     <div class="src"><div class="ic" style="background:var(--navy)">21</div><div class="t"><b>Bukti potong PPh 21 bukan pegawai</b><small>12 dokumen · 4 pemberi kerja · jasa <i>endorsement</i></small></div><div class="v"><b>Rp270 jt</b><small>PPh Rp6,75 jt</small></div></div>
+     <div class="src"><div class="ic" style="background:var(--blue)">22</div><div class="t"><b>Bukti pungut PPh 22 lokapasar</b><small>12 dokumen tagihan · PMK 37/2025 · kelas digital</small></div><div class="v"><b>Rp90 jt</b><small>PPh Rp0,45 jt</small></div></div>
+     <div class="src" style="border-color:#f1c9ce;background:#FFF8F8"><div class="ic" style="background:var(--red)">LN</div><div class="t"><b>Monetisasi platform luar negeri</b><small>tanpa bukti potong domestik · wajib dideklarasikan</small></div><div class="v"><b id="lnVal">Rp20 jt</b><small>tanpa kredit</small></div></div>
+    </div>
+    <div class="card"><h3>Kelengkapan data</h3>
+     <div style="font-size:12.5px;color:var(--mut)">Dokumen pihak ketiga yang sudah dicocokkan</div>
+     <div style="font-size:30px;font-weight:700;color:var(--navy)">24 / 24</div><div class="bar"><i style="width:100%"></i></div>
+     <div style="font-size:12.5px;color:var(--mut);margin-top:14px">Porsi bruto berdokumen</div>
+     <div style="font-size:30px;font-weight:700;color:var(--navy)" id="docShare">94,7%</div><div class="bar"><i id="docBar" style="width:94.7%;background:var(--blue)"></i></div>
+     <p style="font-size:12px;color:var(--mut);margin-top:12px">Sisa porsi berasal dari penghasilan yang hanya dapat diketahui melalui deklarasi aktif kreator.</p>
+    </div>
+   </div>
+  </section>
+
+  <!-- 2 KLASIFIKASI -->
+  <section class="tabpane" data-tab="1">
+   <div class="card"><h3>Klasifikasi transaksi <span><span class="chip c-g"><span class="dot"></span>aturan pasti</span> <span class="chip c-y"><span class="dot"></span>perlu keputusan</span></span></h3>
+    <div id="txList"></div>
+   </div>
+  </section>
+
+  <!-- 3 BUKU CATATAN -->
+  <section class="tabpane" data-tab="2">
+   <div class="card"><h3>Buku catatan peredaran bruto bulanan <span class="chip c-b">dalam ribu rupiah</span></h3>
+    <div style="overflow:auto"><table id="ledger"></table></div>
+   </div>
+   <div class="grid2">
+    <div class="card"><h3>Kalkulasi NPPN</h3><div class="calc" id="calc"></div></div>
+    <div class="card"><h3>Pengingat</h3>
+     <div class="src"><div class="ic" style="background:var(--green)">✓</div><div class="t"><b>Pemberitahuan NPPN terkirim</b><small>sebelum batas tiga bulan pertama tahun pajak</small></div></div>
+     <div class="src"><div class="ic" style="background:var(--yel)">!</div><div class="t"><b>Batas SPT Tahunan 31 Maret 2027</b><small>draf dapat dikirim setelah deklarasi</small></div></div>
+    </div>
+   </div>
+  </section>
+
+  <!-- 4 KONFIRMASI -->
+  <section class="tabpane" data-tab="3">
+   <div class="grid2">
+    <div class="card"><h3>Konfirmasi baris draf</h3><div id="confirmList"></div></div>
+    <div class="card"><h3>Jejak audit</h3><div class="log" id="log"></div></div>
+   </div>
+  </section>
+
+  <!-- 5 DEKLARASI -->
+  <section class="tabpane" data-tab="4">
+   <div class="card"><h3>Deklarasi aktif <span class="chip c-r" id="declChip"><span class="dot"></span>draf belum lengkap</span></h3>
+    <div class="decl">
+     <b style="color:var(--red)">Apakah Anda menerima penghasilan di luar data pihak ketiga selama 2026?</b>
+     <p style="font-size:12px;color:var(--mut);margin-top:4px">Contoh monetisasi iklan luar negeri, donasi langsung penggemar, atau penjualan di luar lokapasar.</p>
+     <label><input type="radio" name="d" value="ya" checked> Ya, jumlahnya</label>
+     <div style="display:flex;gap:8px;align-items:center;margin-left:24px"><span>Rp</span><input type="number" id="declAmt" value="20000000" step="1000000" min="0"></div>
+     <label><input type="radio" name="d" value="tidak"> Tidak ada penghasilan lain</label>
+     <div class="btns"><button class="btn p" id="declBtn">Simpan deklarasi</button></div>
+    </div>
+    <div class="btns" style="margin-top:14px"><button class="btn g" id="sendBtn" disabled>Kirim SPT ke Coretax</button><span style="font-size:12px;color:var(--mut);align-self:center" id="sendHint">Tombol aktif setelah transaksi kuning diputus dan deklarasi disimpan.</span></div>
+   </div>
+  </section>
+  <div class="foot">KANVAS · purwarupa konsep Tim Mr Niknos Congratulations Graduation, PKN STAN · angka kasus ilustratif sesuai Lampiran 1 esai</div>
+ </main>
+</div>
+<nav class="mobnav" id="mobnav"></nav>
+
+<script>
+const MODS=['Agregasi','Klasifikasi','Buku Catatan','Konfirmasi','Deklarasi'];
+const BULAN=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+const END=[20,25,15,30,20,25,15,30,20,25,20,25];      // juta, dipotong PPh 21 (5% x 50% bruto)
+const LOK=Array(12).fill(7.5);                       // juta, dipungut PPh 22 0,5%
+let LN=[0,0,5,0,0,5,0,0,5,0,0,5];                    // juta, monetisasi luar negeri
+const st={tab:0,yellow:false,declared:false,log:[]};
+const fmt=v=>'Rp'+(Math.round(v*100)/100).toLocaleString('id-ID',{maximumFractionDigits:2})+' jt';
+const rb=v=>(Math.round(v*10000)/10).toLocaleString('id-ID',{maximumFractionDigits:1});
+function tax(pkp){const L=[[60,.05],[190,.15],[250,.25],[4500,.30],[1e9,.35]];let t=0,prev=0;for(const [cap,r] of L){if(pkp>prev){t+=(Math.min(pkp,cap)-prev)*r}prev=cap}return t}
+function calc(){const b=END.reduce((a,c)=>a+c,0)+LOK.reduce((a,c)=>a+c,0)+LN.reduce((a,c)=>a+c,0);
+ const neto=b*0.5, pkp=Math.max(0,neto-54), pph=tax(pkp), k21=END.reduce((a,c)=>a+c*0.025,0), k22=LOK.reduce((a,c)=>a+c*0.005,0), kr=k21+k22, pos=pph-kr;
+ return {b,neto,pkp,pph,k21,k22,kr,pos}}
+function log(msg){const t=new Date();st.log.unshift(`<div><b>${t.toLocaleDateString('id-ID')} ${t.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})}</b> · ${msg}</div>`);render()}
+function render(){
+ const c=calc();
+ kBruto.textContent=fmt(c.b);kNeto.textContent=fmt(c.neto);kPPh.textContent=fmt(c.pph);kKredit.textContent=fmt(c.kr);
+ kPosLbl.textContent=c.pos>=0?'Kurang bayar':'Lebih bayar';kPos.textContent=fmt(Math.abs(c.pos));
+ lnVal.textContent=fmt(LN.reduce((a,x)=>a+x,0));
+ const share=(c.b-LN.reduce((a,x)=>a+x,0))/c.b*100;docShare.textContent=share.toLocaleString('id-ID',{maximumFractionDigits:1})+'%';docBar.style.width=share+'%';
+ // nav
+ const done=[true,st.yellow,true,st.yellow&&st.declared,st.declared];
+ nav.innerHTML=MODS.map((m,i)=>`<button class="${i===st.tab?'on':''} ${done[i]&&i!==st.tab?'done':''}" onclick="go(${i})"><span class="n">${done[i]&&i!==st.tab?'✓':i+1}</span>${m}</button>`).join('');
+ mobnav.innerHTML=MODS.map((m,i)=>`<button class="${i===st.tab?'on':''}" onclick="go(${i})"><span class="n">${i+1}</span>${m.split(' ')[0]}</button>`).join('');
+ document.querySelectorAll('.tabpane').forEach(p=>p.classList.toggle('on',+p.dataset.tab===st.tab));
+ ttl.textContent=['Agregasi data pihak ketiga','Klasifikasi transaksi','Buku catatan dan kalkulasi','Konfirmasi dan jejak audit','Deklarasi aktif'][st.tab];
+ statusChips.innerHTML=`<span class="chip c-g"><span class="dot"></span>24 dokumen hijau</span>`+(st.yellow?`<span class="chip c-g"><span class="dot"></span>kuning diputus</span>`:`<span class="chip c-y"><span class="dot"></span>1 kuning</span>`)+(st.declared?`<span class="chip c-g"><span class="dot"></span>deklarasi tersimpan</span>`:`<span class="chip c-r"><span class="dot"></span>draf belum lengkap</span>`);
+ const left=(!st.yellow)+(!st.declared);
+ bannerTitle.textContent=left?`Draf hampir siap, tinggal ${left===2?'dua':'satu'} langkah`:'Draf lengkap dan siap dikirim';
+ bannerText.textContent=left?'Putuskan transaksi berlabel kuning dan nyatakan penghasilan di luar data pihak ketiga sebelum draf dapat dikirim.':'Seluruh baris telah dikonfirmasi. Anda tetap dapat mengoreksi angka sebelum pengiriman.';
+ // tx
+ const tx=[['g','PT Agensi Kreatif Nusantara','Bukti potong PPh 21 · jasa endorsement · 8 termin','Rp180 jt'],['g','CV Ruang Promosi','Bukti potong PPh 21 · jasa endorsement · 4 termin','Rp90 jt'],['g','Lokapasar A','Dokumen tagihan PPh 22 · kelas digital · 12 bulan','Rp90 jt'],['y','Siaran langsung berbayar','Usaha atau pekerjaan bebas? Aturan pasti tidak memutus, model menyarankan pekerjaan bebas','termasuk Rp270 jt']];
+ txList.innerHTML=tx.map(([s,a,b,v],i)=>`<div class="tx"><span class="chip ${s==='g'?'c-g':(st.yellow?'c-g':'c-y')}"><span class="dot"></span>${s==='g'?'hijau':(st.yellow?'diputus':'kuning')}</span><div class="t"><b>${a}</b><small>${b}</small>${s==='y'&&!st.yellow?`<div class="btns"><button class="btn p" onclick="decide('pekerjaan bebas')">Pekerjaan bebas</button><button class="btn" onclick="decide('usaha')">Usaha</button><button class="btn" onclick="decide('minta petugas')">Minta petugas</button></div>`:''}</div><div class="a">${v}</div></div>`).join('');
+ // ledger
+ let h='<thead><tr><th>Bulan</th><th>Endorsement</th><th>Lokapasar</th><th>Luar negeri</th><th>Bruto</th><th class="hide-m">PPh 21</th><th class="hide-m">PPh 22</th></tr></thead><tbody>';
+ for(let i=0;i<12;i++){h+=`<tr><td>${BULAN[i]}</td><td>${rb(END[i])}</td><td>${rb(LOK[i])}</td><td>${rb(LN[i])}</td><td><b>${rb(END[i]+LOK[i]+LN[i])}</b></td><td class="hide-m">${rb(END[i]*.025)}</td><td class="hide-m">${rb(LOK[i]*.005)}</td></tr>`}
+ const s=a=>a.reduce((x,y)=>x+y,0);
+ h+=`</tbody><tfoot><tr><td>Total</td><td>${rb(s(END))}</td><td>${rb(s(LOK))}</td><td>${rb(s(LN))}</td><td>${rb(c.b)}</td><td class="hide-m">${rb(c.k21)}</td><td class="hide-m">${rb(c.k22)}</td></tr></tfoot>`;
+ ledger.innerHTML=h;
+ calcEl.innerHTML=[['Peredaran bruto setahun',fmt(c.b)],['Penghasilan neto, norma 50%',fmt(c.neto)],['PTKP TK/0','− Rp54 jt','minus'],['Penghasilan kena pajak',fmt(c.pkp)],['PPh terutang, tarif Pasal 17',fmt(c.pph)],['Kredit PPh 21 dan PPh 22','− '+fmt(c.kr),'minus'],[c.pos>=0?'PPh kurang bayar':'PPh lebih bayar',fmt(Math.abs(c.pos)),'tot']].map(([a,b,k])=>`<div class="row ${k||''}"><span>${a}</span><b>${b}</b></div>`).join('');
+ confirmList.innerHTML=[['Bruto endorsement','Rp270 jt'],['Bruto lokapasar','Rp90 jt'],['Bruto luar negeri (deklarasi)',fmt(s(LN))],['Kredit pajak',fmt(c.kr)]].map(([a,b],i)=>`<div class="tx"><div class="t"><b>${a}</b><small>dapat ditelusuri ke dokumen sumber</small></div><div class="a">${b}</div></div>`).join('')+`<div class="btns"><button class="btn p" onclick="log('Kreator menyetujui seluruh baris draf')">Setujui semua baris</button><button class="btn" onclick="log('Kreator membuka koreksi baris endorsement')">Koreksi baris</button></div>`;
+ document.getElementById('log').innerHTML=st.log.join('')||'<div>Belum ada aktivitas.</div>';
+ declChip.className='chip '+(st.declared?'c-g':'c-r');declChip.innerHTML='<span class="dot"></span>'+(st.declared?'deklarasi tersimpan':'draf belum lengkap');
+ sendBtn.disabled=!(st.yellow&&st.declared);
+}
+const calcEl=document.getElementById('calc');
+function go(i){st.tab=i;render();window.scrollTo(0,0)}
+function decide(v){st.yellow=true;log(`Transaksi kuning siaran langsung diputus sebagai ${v}`)}
+document.getElementById('declBtn').onclick=()=>{const ya=document.querySelector('input[name=d]:checked').value==='ya';const amt=ya?Math.max(0,+declAmt.value||0)/1e6:0;
+ const q=amt/4;LN=[0,0,q,0,0,q,0,0,q,0,0,q];st.declared=true;log(`Deklarasi penghasilan di luar data pihak ketiga ${ya?'sebesar '+fmt(amt):'nihil'}`)};
+document.getElementById('sendBtn').onclick=()=>{log('Draf SPT dikirim ke Coretax dengan status lengkap');sendHint.textContent='Terkirim. Bukti penerimaan elektronik tersimpan di jejak audit.'};
+const q=new URLSearchParams(location.search);if(q.get('tab'))st.tab=+q.get('tab');if(q.get('demo')){st.yellow=true;st.declared=true;st.log=['<div><b>14/02/2027 09.12</b> · Deklarasi penghasilan di luar data pihak ketiga sebesar Rp20 jt</div>','<div><b>14/02/2027 09.05</b> · Transaksi kuning siaran langsung diputus sebagai pekerjaan bebas</div>','<div><b>01/02/2027 07.00</b> · KANVAS menyusun draf dari 24 dokumen pihak ketiga</div>']}
+render();
+</script>
+</body>
+</html>
